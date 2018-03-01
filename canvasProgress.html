@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	
+	.as{
+		width: 100px;
+		height: 100px;
+		background-color:#4775d1;
+	}
+</style>
+<body>
+	<canvas id="myCanvas" width="400" height="200"></canvas>
+		
+
+		<div class="as">
+			
+		</div>
+	<button id="btn1">knock1</button>
+	<button id="btn2">knock2</button>
+</body>
+
+<script>
+	var c=document.getElementById("myCanvas");
+	var ctx=c.getContext("2d");
+	
+
+
+var x = 0;
+var x1 = 0;
+var render = function(){
+		if(x == 200 || x1 == -200) {
+			console.log('进去')
+			return false;
+		} else {
+			x+=2;
+			ctx.fillStyle="#4775d1";
+			ctx.fillRect(0,0,x,20);
+
+			x1-=2;
+			ctx.fillStyle="#f85b59";
+			ctx.fillRect(400,0,x1,20);
+		}
+		requestAnimationFrame(render);
+
+
+console.log(x1,x)
+
+}
+render();
+
+
+
+
+
+var num = 200;
+var num1 = -200;
+var btn1 = document.getElementById('btn1');
+var btn2 = document.getElementById('btn2');
+btn1.onclick = function(){
+	if(num==400){
+		alert('结束')
+		return false
+	}else{
+		num+=10;
+		num1+=10;
+		ctx.fillStyle="#4775d1";
+		ctx.fillRect(0,0,num,20);
+		ctx.fillStyle="#f85b59";
+		ctx.fillRect(400,0,num1,20);
+	}
+}
+btn2.onclick = function(){
+	if(num1==-400){
+		alert('结束')
+		return false
+	}else{
+		num-=10
+		num1-=10
+		ctx.fillStyle="#4775d1";
+		ctx.shadowColor = "rgba(0,0,0,1)"
+		ctx.fillRect(0,0,num,20);
+		ctx.fillStyle="#f85b59";
+		ctx.shadowColor = "rgba(0,0,0,1)"
+		ctx.fillRect(400,0,num1,20);
+	}
+}
+</script>
+</html>
